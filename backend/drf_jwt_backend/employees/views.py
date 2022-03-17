@@ -7,8 +7,8 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
 from .models import Employee
 from .serializers import EmployeeSerializer
-from drf_jwt_backend.customers.models import Customer
-from drf_jwt_backend.customers.serializers import CustomerSerializer
+from customers.models import Customer
+from customers.serializers import CustomerSerializer
 
 # Create your views here.
 
