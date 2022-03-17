@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'authentication.apps.AuthenticationConfig',
-    'corsheaders',  # This app is for example use only
+    'corsheaders', 
+    'customers.apps.CustomersConfig' # This app is for example use only
 ]
 
 MIDDLEWARE = [
