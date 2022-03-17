@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'authentication.apps.AuthenticationConfig',
     'corsheaders', 
-    'customers.apps.CustomersConfig' # This app is for example use only
+    'customers.apps.CustomersConfig',
+    'employees.apps.EmployeesConfig'
+    # This app is for example use only
 ]
 
 MIDDLEWARE = [
