@@ -12,8 +12,8 @@ from .serializers import CustomerSerializer
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def get_customer_information(request, customer_id):
-    customers = Customer.objects.filter(customer_id=customer_id)
+def get_customer_information(request, pk):
+    customers = Customer.objects.filter(pk=pk)
     serializer = CustomerSerializer(customers, many=True)
     return Response(serializer.data)
 
