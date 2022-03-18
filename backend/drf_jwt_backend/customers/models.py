@@ -13,3 +13,7 @@ class Customer(models.Model):
     zip_code = models.CharField(max_length=10)
     country = models.CharField(max_length=30)
     telephone = models.CharField(max_length=20)
+    box_plan_category = models.CharField(max_length=30, default='')
+    box_is_purchased = models.BooleanField(blank=False, default='')
+    teach_yourself_is_purchased = models.BooleanField(blank=False, default='')
+    total_beginner_is_purchased = models.BooleanField(blank=False, default='')
