@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'corsheaders', 
     'customers.apps.CustomersConfig',
     'employees.apps.EmployeesConfig',
-    'box_plans.apps.BoxPlansConfig'
+    'box_plans.apps.BoxPlansConfig',
+    'shipping.apps.ShippingConfig'
     # This app is for example use only
 ]
 
