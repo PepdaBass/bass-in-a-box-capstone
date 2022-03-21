@@ -1,5 +1,6 @@
 from django.db import models
-from .models import Customer, Box_Plan, Total_Beginner_Package
+from customers.models import Customer
+from box_plans.models import Box_Plan, Total_Beginner_Package
 
 
 # Create your models here.

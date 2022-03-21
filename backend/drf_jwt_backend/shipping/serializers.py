@@ -6,10 +6,10 @@ class ShippingSerializer(serializers.ModelSerializer):
         model = Shipping
         fields = [
             'id',
-            'customer',
-            'box_plan',
-            'total_beginner_package',
             'shipping_type',
             'shipping_company',
-            'shipping_cost'
+            'shipping_cost',
+            'box_plan',
+            'customer',
+            'total_beginner_package'
         ]
