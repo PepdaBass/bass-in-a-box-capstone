@@ -21,5 +21,6 @@ urlpatterns = [
     path('api/auth/', include('authentication.urls')),
     path('api/', include('customers.urls')),
     path('api/', include('employees.urls')),
-    path('api/', include('box_plans.urls'))
+    path('api/', include('box_plans.urls')),
+    path('api/', include('shipping.urls'))
 ]
