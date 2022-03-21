@@ -19,5 +19,9 @@ class CustomerSerializer(serializers.ModelSerializer):
         'state',
         'zip_code',
         'country',
-        'telephone'
+        'telephone',
+        'box_plan_category',
+        'box_is_purchased',
+        'teach_yourself_is_purchased',
+        'total_beginner_is_purchased'
         ]

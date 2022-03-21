@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'authentication.apps.AuthenticationConfig',
     'corsheaders', 
     'customers.apps.CustomersConfig',
-    'employees.apps.EmployeesConfig'
+    'employees.apps.EmployeesConfig',
+    'box_plans.apps.BoxPlansConfig'
     # This app is for example use only
 ]
 
