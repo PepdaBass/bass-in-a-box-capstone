@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'employees.apps.EmployeesConfig',
     'box_plans.apps.BoxPlansConfig',
     'shipping.apps.ShippingConfig',
-    'credit_card_payments.apps.CreditCardPaymentsConfig'
+    'credit_card_payments.apps.CreditCardPaymentsConfig',
+    'bills.apps.BillsConfig'
     # This app is for example use only
 ]
 

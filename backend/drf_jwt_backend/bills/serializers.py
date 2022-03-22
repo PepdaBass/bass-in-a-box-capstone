@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import Bill
 
 class BillSerializer(serializers.ModelSerializer):
-    class meta:
+    class Meta:
         model = Bill
         fields = [
             'id',
