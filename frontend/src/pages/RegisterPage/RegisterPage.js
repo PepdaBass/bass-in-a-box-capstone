@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
 import useCustomForm from "../../hooks/useCustomForm";
+import { Link } from "react-router-dom";
 
 const RegisterPage = () => {
   const { registerUser } = useContext(AuthContext);
@@ -68,7 +69,7 @@ const RegisterPage = () => {
           NOTE: Make this an uncommon password with characters, numbers, and
           special characters!
         </p>
-        <button>Register!</button>
+          <button>Register</button>
       </form>
     </div>
   );
