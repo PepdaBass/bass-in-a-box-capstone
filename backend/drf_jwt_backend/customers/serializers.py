@@ -8,6 +8,7 @@ class UserSerializer(serializers.ModelSerializer):
     fields = ['id', 'username']
 
 class CustomerSerializer(serializers.ModelSerializer):
+  user = UserSerializer(many=False, read_only=True)
   class Meta:
     model = Customer
     fields = [
@@ -25,6 +26,6 @@ class CustomerSerializer(serializers.ModelSerializer):
         'total_beginner_is_purchased',
         'user',
         'box_plan',
-        'selt_teach_plan',
+        'self_teach_plan',
         'total_beginner_package'
         ]

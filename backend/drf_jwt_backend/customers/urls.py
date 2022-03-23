@@ -1,6 +1,7 @@
 from importlib.resources import path
 from django.urls import path
 from customers import views
+from .models import Customer
 
 urlpatterns = [
     path('customer/<int:pk>/', views.get_customer_information),
