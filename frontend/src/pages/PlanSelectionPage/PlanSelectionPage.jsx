@@ -16,7 +16,7 @@ const PlanSelectionPage = ({ surveyData, customers, boxPlans, beginnerPackage, s
 
     async function addPlanToCustomer() {
         try {
-            let response = await axios.put(`http://127.0.0.1:8000/api/customer/edit/${customerId[0].user.id}`, formData, {
+            let response = await axios.put(`http://127.0.0.1:8000/api/customer/edit/${customerId[0].user.id}/`, formData, {
                 headers: {
                     Authorization: "Bearer " + token,
                 },

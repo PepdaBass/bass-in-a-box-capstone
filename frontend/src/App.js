@@ -31,7 +31,7 @@ export default function App() {
 
   const updateBoxPlanInfo = (boxPlanData) => {
     setBoxPlans(boxPlanData);
-}
+  }
 
   const updateBeginnerPackageInfo = (beginnerPackageData) => {
     setBeginnerPackage(beginnerPackageData);

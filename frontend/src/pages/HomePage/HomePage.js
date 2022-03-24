@@ -11,9 +11,9 @@ const HomePage = ({ setCustomers, customers }) => {
   const [user, token] = useAuth();
   const userId = user.user_id || user.id;
   const [totalPayments, setTotalPayments] = useState([]);
-  const {customerBoxPlan, setCustomerBoxPlan} = useState([]);
-  const {customerSelfTeach, setCustomerSelfTeach} = useState([]);
-  const {customerBeginnerPackage, setCustomerBeginnerPackage} = useState([]);
+  const [customerBoxPlan, setCustomerBoxPlan] = useState([]);
+  const [customerSelfTeach, setCustomerSelfTeach] = useState([]);
+  const [customerBeginnerPackage, setCustomerBeginnerPackage] = useState([]);
   
   const updateCustomerInfo = (customerData) => {
     setCustomers(customerData)
