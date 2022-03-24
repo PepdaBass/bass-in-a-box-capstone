@@ -26,8 +26,9 @@ let initialValues = {
 
 const ContinueRegistrationPage = () => {
     const [user, token] = useAuth();
-    const navigate = useNavigate();
     const [formData, handleInputChange, handleSubmit] = useCustomForm(initialValues, postNewCustomer);
+
+    const navigate = useNavigate();
 
   
     async function postNewCustomer(){
@@ -36,7 +37,7 @@ const ContinueRegistrationPage = () => {
                 headers: {
                     Authorization: "Bearer " + token
                 }
-            })
+            });
             console.log(response);
             navigate("/");
         } catch (error) {
@@ -119,12 +120,11 @@ const ContinueRegistrationPage = () => {
             onChange={handleInputChange}
           />
         </label>
-        
-        <button>Complete Registration</button>
-        <Link to="/">
+        <button type="submit">Complete Registration</button>
+      </form>
+      <Link to="/">
             <button>Return to Home</button>
         </Link>
-      </form>
     </div>
      );
 }

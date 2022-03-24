@@ -1,7 +1,8 @@
 // General Imports
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
+import axios from "axios";
 
 // Pages Imports
 import HomePage from "./pages/HomePage/HomePage";
@@ -24,16 +25,62 @@ export default function App() {
   
   const [surveyData, setSurveyData] = useState([]);
   const [customers, setCustomers] = useState([]); 
+  const [boxPlans, setBoxPlans] = useState([]);
   const [beginnerPackage, setBeginnerPackage] = useState([]);
   const [selfTeachPlan, setSelfTeachPlan] = useState([]);
 
-  console.log("app survey data", surveyData)
-  const [user, token] = useAuth();
-  // const [customers, userId, userCustomerInfo] = HomePage();
+  const updateBoxPlanInfo = (boxPlanData) => {
+    setBoxPlans(boxPlanData);
+  }
+
+  const updateBeginnerPackageInfo = (beginnerPackageData) => {
+    setBeginnerPackage(beginnerPackageData);
+  }
+
+  const updateSelfTeachPlanInfo = (selfTeachData) => {
+    setSelfTeachPlan(selfTeachData);
+  }
+
+  useEffect(() => {
+    const fetchBoxPlans = async () => {
+      try {
+        let response = await axios.get("http://127.0.0.1:8000/api/box_plans/");
+        updateBoxPlanInfo(response.data);
+        console.log("response", response.data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    fetchBoxPlans();
+  }, []);
+
+  useEffect(() => {
+    const fetchBeginnerPackages = async () => {
+      try {
+        let response = await axios.get("http://127.0.0.1:8000/api/total_beginner_packages/");
+        updateBeginnerPackageInfo(response.data);
+        console.log("response", response.data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    fetchBeginnerPackages();
+  }, []);
+
+  useEffect(() => {
+    const fetchSelfTeachPlans = async () => {
+      try {
+        let response = await axios.get("http://127.0.0.1:8000/api/self_teach_plans/");
+        updateSelfTeachPlanInfo(response.data);
+        console.log("response", response.data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    fetchSelfTeachPlans();
+  }, []);
 
   
-
-
   return (
     <div>
       <Navbar />
@@ -58,7 +105,7 @@ export default function App() {
           </PrivateRoute>} />
         <Route path="/select_plan" element={
         <PrivateRoute>
-            <PlanSelectionPage customers={customers} surveyData={surveyData} beginnerPackage={beginnerPackage} setBeginnerPackage={setBeginnerPackage} selfTeachPlan={selfTeachPlan} setSelfTeachPlan={setSelfTeachPlan} />
+            <PlanSelectionPage customers={customers} surveyData={surveyData} boxPlans={boxPlans} beginnerPackage={beginnerPackage} selfTeachPlan={selfTeachPlan} />
         </PrivateRoute>} />
       </Routes>
     

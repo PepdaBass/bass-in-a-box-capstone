@@ -3,15 +3,17 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 import useAuth from "../../hooks/useAuth";
+import MonthlyBill from "../../components/MonthlyBill/MonthlyBill";
 
 const HomePage = ({ setCustomers, customers }) => {
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
   // The "token" value is the JWT token that you will send in the header of any request requiring authentication
   const [user, token] = useAuth();
   const userId = user.user_id || user.id;
-  
-
- 
+  const [totalPayments, setTotalPayments] = useState([]);
+  const [customerBoxPlan, setCustomerBoxPlan] = useState([]);
+  const [customerSelfTeach, setCustomerSelfTeach] = useState([]);
+  const [customerBeginnerPackage, setCustomerBeginnerPackage] = useState([]);
   
   const updateCustomerInfo = (customerData) => {
     setCustomers(customerData)
@@ -33,10 +35,7 @@ const HomePage = ({ setCustomers, customers }) => {
     fetchCustomer();
   }, []);
   
-
   const userCustomerInfo = customers.filter(customer => customer.user.id === userId)
-  console.log(customers)
-  console.log(user)
 
   return (
     <div className="container">
@@ -50,6 +49,16 @@ const HomePage = ({ setCustomers, customers }) => {
             Telephone: {field.telephone} <br />
           </p>
         ))}
+        <MonthlyBill 
+        totalPayments={totalPayments} 
+        setTotalPayments={setTotalPayments} 
+        userCustomerInfo={userCustomerInfo}
+        customerBoxPlan={customerBoxPlan}
+        setCustomerBoxPlan={setCustomerBoxPlan}
+        customerSelfTeach={customerSelfTeach}
+        setCustomerSelfTeach={setCustomerSelfTeach}
+        customerBeginnerPackage={customerBeginnerPackage}
+        setCustomerBeginnerPackage={setCustomerBeginnerPackage} />
       <Link to="/create_customer">
         <button>Finish Registration</button>
       </Link>
