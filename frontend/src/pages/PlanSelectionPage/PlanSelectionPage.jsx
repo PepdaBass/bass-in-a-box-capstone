@@ -1,45 +1,27 @@
-import { React, useState, useEffect } from "react";
+import React from "react";
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import useCustomForm from "../../hooks/useCustomForm";
 
 
-const PlanSelectionPage = ({ surveyData, customers, beginnerPackage, setBeginnerPackage, selfTeachPlan, setSelfTeachPlan }) => {
+const PlanSelectionPage = ({ surveyData, customers, boxPlans, beginnerPackage, selfTeachPlan }) => {
 
     const [user, token] = useAuth();
-    const [boxPlans, setBoxPlans] = useState([]);
-    
     const userId = user.user_id || user.id;
     const userCustomerInfo = customers.find(customer => customer.user.id === userId)
-    console.log("customer info", userCustomerInfo)
-    console.log(customers)
-
     const [formData, handleInputChange, handleSubmit] = useCustomForm(userCustomerInfo, addPlanToCustomer);
 
-    
-  
-    const updateBoxPlanInfo = (boxPlanData) => {
-        setBoxPlans(boxPlanData);
-    }
-
-    const updateBeginnerPackageInfo = (beginnerPackageData) => {
-      setBeginnerPackage(beginnerPackageData);
-    }
-
-    const updateSelfTeachPlanInfo = (selfTeachData) => {
-      setSelfTeachPlan(selfTeachData);
-    }
-
     let customerId = customers.filter(customer => customer.user.id === userId);
+    console.log("customer ID", customerId[0].user.id);
 
     async function addPlanToCustomer() {
         try {
-            // let response = await axios.put(`http://127.0.0.1:8000/api/customer/edit/${customerId.user.id}`, formData, {
-            //     headers: {
-            //         Authorization: "Bearer " + token,
-            //     },
-            // });
-            // console.log(response);
+            let response = await axios.put(`http://127.0.0.1:8000/api/customer/edit/${customerId[0].user.id}`, formData, {
+                headers: {
+                    Authorization: "Bearer " + token,
+                },
+            });
+            console.log(response);
             console.log("put", formData)
         }
         catch (error) {
@@ -47,59 +29,14 @@ const PlanSelectionPage = ({ surveyData, customers, beginnerPackage, setBeginner
         }
     }
 
-    // const handleClick = (event) => {
-    //     event.preventDefault();
-    //     addPlanToCustomer();
-    // }
 
-    console.log("survey data", surveyData);
+    let firstFilter = boxPlans.filter(datumOne => (datumOne.sub_category === (surveyData.instrumentType + " - " + surveyData.musicStyle)));
+    let secondFilter = beginnerPackage.filter(datumTwo => (datumTwo.sub_category === (surveyData.instrumentType + " - " + surveyData.musicStyle)));
+    let thirdFilter = selfTeachPlan.filter(datumThree => (datumThree.sub_category === (surveyData.instrumentType + " - " + surveyData.musicStyle)));
 
-    useEffect(() => {
-        const fetchBoxPlans = async () => {
-          try {
-            let response = await axios.get("http://127.0.0.1:8000/api/box_plans/");
-            updateBoxPlanInfo(response.data);
-            console.log("response", response.data);
-          } catch (error) {
-            console.log(error.message);
-          }
-        };
-        fetchBoxPlans();
-      }, []);
-
-      useEffect(() => {
-        const fetchBeginnerPackages = async () => {
-          try {
-            let response = await axios.get("http://127.0.0.1:8000/api/total_beginner_packages/");
-            updateBeginnerPackageInfo(response.data);
-            console.log("response", response.data);
-          } catch (error) {
-            console.log(error.message);
-          }
-        };
-        fetchBeginnerPackages();
-      }, []);
-
-      useEffect(() => {
-        const fetchSelfTeachPlans = async () => {
-          try {
-            let response = await axios.get("http://127.0.0.1:8000/api/self_teach_plans/");
-            updateSelfTeachPlanInfo(response.data);
-            console.log("response", response.data);
-          } catch (error) {
-            console.log(error.message);
-          }
-        };
-        fetchSelfTeachPlans();
-      }, []);
-
-      let firstFilter = boxPlans.filter(datumOne => (datumOne.sub_category === (surveyData.instrumentType + " - " + surveyData.musicStyle)));
-      let secondFilter = beginnerPackage.filter(datumTwo => (datumTwo.sub_category === (surveyData.instrumentType + " - " + surveyData.musicStyle)));
-      let thirdFilter = selfTeachPlan.filter(datumThree => (datumThree.sub_category === (surveyData.instrumentType + " - " + surveyData.musicStyle)));
-
-      console.log("first filter", firstFilter);
-      console.log("second filter", secondFilter);
-      console.log("third filter", thirdFilter)
+    console.log("first filter", firstFilter);
+    console.log("second filter", secondFilter);
+    console.log("third filter", thirdFilter)
 
     return ( 
         <form onSubmit={handleSubmit}>

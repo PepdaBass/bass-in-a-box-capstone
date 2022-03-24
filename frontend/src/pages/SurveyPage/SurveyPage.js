@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-
-import useAuth from "../../hooks/useAuth"
 import useCustomForm from "../../hooks/useCustomForm"
 
 
@@ -17,16 +15,11 @@ const SurveyPage = ({ setSurveyData }) => {
 
     const navigate = useNavigate();
     const [formData, handleInputChange, handleSubmit] = useCustomForm(initialValues, updateSurveyData);
-    const [user, token] = useAuth();
-    const userId = user.user_id || user.id;
     
     function updateSurveyData() {
         setSurveyData(formData);
         navigate("/select_plan");
     }
-
-
-    console.log("survey form data", formData);
 
 
     return ( 
