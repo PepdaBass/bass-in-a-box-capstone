@@ -9,6 +9,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import ContinueRegistrationPage from "./pages/ContinueRegistrationPage/ContinueRegistrationPage";
 import SurveyPage from "./pages/SurveyPage/SurveyPage";
+import PlanSelectionPage from "./pages/PlanSelectionPage/PlanSelectionPage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -16,12 +17,22 @@ import Footer from "./components/Footer/Footer";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
+import useAuth from "./hooks/useAuth";
 
 
 export default function App() {
   
   const [surveyData, setSurveyData] = useState([]);
-  console.log(surveyData)
+  const [customers, setCustomers] = useState([]); 
+  const [beginnerPackage, setBeginnerPackage] = useState([]);
+  const [selfTeachPlan, setSelfTeachPlan] = useState([]);
+
+  console.log("app survey data", surveyData)
+  const [user, token] = useAuth();
+  // const [customers, userId, userCustomerInfo] = HomePage();
+
+  
+
 
   return (
     <div>
@@ -31,7 +42,7 @@ export default function App() {
           path="/"
           element={
             <PrivateRoute>
-              <HomePage />
+              <HomePage customers={customers} setCustomers={setCustomers} />
             </PrivateRoute>
           }
         />
@@ -45,8 +56,12 @@ export default function App() {
           <PrivateRoute>
              <SurveyPage setSurveyData={setSurveyData} />
           </PrivateRoute>} />
+        <Route path="/select_plan" element={
+        <PrivateRoute>
+            <PlanSelectionPage customers={customers} surveyData={surveyData} beginnerPackage={beginnerPackage} setBeginnerPackage={setBeginnerPackage} selfTeachPlan={selfTeachPlan} setSelfTeachPlan={setSelfTeachPlan} />
+        </PrivateRoute>} />
       </Routes>
-      <Footer />
+    
     </div>
   );
 }

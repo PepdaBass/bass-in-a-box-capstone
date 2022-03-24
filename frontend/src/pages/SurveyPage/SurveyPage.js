@@ -17,16 +17,16 @@ const SurveyPage = ({ setSurveyData }) => {
 
     const navigate = useNavigate();
     const [formData, handleInputChange, handleSubmit] = useCustomForm(initialValues, updateSurveyData);
+    const [user, token] = useAuth();
+    const userId = user.user_id || user.id;
     
     function updateSurveyData() {
         setSurveyData(formData);
-    }
-    
-    const handleClick = () => {
-        navigate("/");
+        navigate("/select_plan");
     }
 
-    console.log(formData);
+
+    console.log("survey form data", formData);
 
 
     return ( 
@@ -87,7 +87,7 @@ const SurveyPage = ({ setSurveyData }) => {
                 <option value="Jazz">Jazz</option>
                 <option value="Metal">Metal</option>
             </select>
-        <button onClick={handleClick}>Submit</button>
+        <button>Submit</button>
         </form>
         </div>
      );
