@@ -11,6 +11,7 @@ import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import ContinueRegistrationPage from "./pages/ContinueRegistrationPage/ContinueRegistrationPage";
 import SurveyPage from "./pages/SurveyPage/SurveyPage";
 import PlanSelectionPage from "./pages/PlanSelectionPage/PlanSelectionPage";
+import EmployeeHomePage from "./pages/EmployeeHomePage/EmployeeHomePage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -23,29 +24,20 @@ import useAuth from "./hooks/useAuth";
 
 export default function App() {
   
+  const [user, token] = useAuth();
   const [surveyData, setSurveyData] = useState([]);
   const [customers, setCustomers] = useState([]); 
   const [boxPlans, setBoxPlans] = useState([]);
   const [beginnerPackage, setBeginnerPackage] = useState([]);
   const [selfTeachPlan, setSelfTeachPlan] = useState([]);
 
-  const updateBoxPlanInfo = (boxPlanData) => {
-    setBoxPlans(boxPlanData);
-  }
 
-  const updateBeginnerPackageInfo = (beginnerPackageData) => {
-    setBeginnerPackage(beginnerPackageData);
-  }
-
-  const updateSelfTeachPlanInfo = (selfTeachData) => {
-    setSelfTeachPlan(selfTeachData);
-  }
 
   useEffect(() => {
     const fetchBoxPlans = async () => {
       try {
         let response = await axios.get("http://127.0.0.1:8000/api/box_plans/");
-        updateBoxPlanInfo(response.data);
+        setBoxPlans(response.data);
         console.log("response", response.data);
       } catch (error) {
         console.log(error.message);
@@ -58,7 +50,7 @@ export default function App() {
     const fetchBeginnerPackages = async () => {
       try {
         let response = await axios.get("http://127.0.0.1:8000/api/total_beginner_packages/");
-        updateBeginnerPackageInfo(response.data);
+        setBeginnerPackage(response.data);
         console.log("response", response.data);
       } catch (error) {
         console.log(error.message);
@@ -71,7 +63,7 @@ export default function App() {
     const fetchSelfTeachPlans = async () => {
       try {
         let response = await axios.get("http://127.0.0.1:8000/api/self_teach_plans/");
-        updateSelfTeachPlanInfo(response.data);
+        setSelfTeachPlan(response.data);
         console.log("response", response.data);
       } catch (error) {
         console.log(error.message);
@@ -79,6 +71,8 @@ export default function App() {
     };
     fetchSelfTeachPlans();
   }, []);
+
+ 
 
   
   return (
@@ -89,7 +83,7 @@ export default function App() {
           path="/"
           element={
             <PrivateRoute>
-              <HomePage customers={customers} setCustomers={setCustomers} />
+                <HomePage customers={customers} setCustomers={setCustomers} boxPlans={boxPlans} beginnerPackage={beginnerPackage} selfTeachPlan={selfTeachPlan} />
             </PrivateRoute>
           }
         />
