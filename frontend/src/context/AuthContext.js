@@ -49,6 +49,7 @@ export const AuthProvider = ({ children }) => {
           username: loggedInUser.username,
           id: loggedInUser.user_id,
           first_name: loggedInUser.first_name,
+          is_staff: loggedInUser.is_staff
         });
         setIsServerError(false);
         navigate("/");

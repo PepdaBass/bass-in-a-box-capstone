@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import useCustomForm from "../../hooks/useCustomForm";
+import { useNavigate } from "react-router-dom";
 
 
 const PlanSelectionPage = ({ surveyData, customers, boxPlans, beginnerPackage, selfTeachPlan }) => {
@@ -12,17 +13,20 @@ const PlanSelectionPage = ({ surveyData, customers, boxPlans, beginnerPackage, s
     const [formData, handleInputChange, handleSubmit] = useCustomForm(userCustomerInfo, addPlanToCustomer);
 
     let customerId = customers.filter(customer => customer.user.id === userId);
-    console.log("customer ID", customerId[0].user.id);
+    console.log("customer ID", customerId[0]?.user.id);
+
+    let navigate = useNavigate();
 
     async function addPlanToCustomer() {
         try {
-            let response = await axios.put(`http://127.0.0.1:8000/api/customer/edit/${customerId[0].user.id}/`, formData, {
+            let response = await axios.put(`http://127.0.0.1:8000/api/customer/edit/${customerId[0]?.user.id}/`, formData, {
                 headers: {
                     Authorization: "Bearer " + token,
                 },
             });
             console.log(response);
             console.log("put", formData)
+            navigate("/");
         }
         catch (error) {
             console.log(error.message);

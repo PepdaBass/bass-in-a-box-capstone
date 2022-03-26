@@ -22,5 +22,6 @@ urlpatterns = [
     path('employee/create/', views.create_employee),
     path('employee/edit/<int:pk>/', views.edit_employee),
     path('employee/all_customers/', views.get_all_customers),
-    path('employee/delete/<int:pk>/', views.delete_customer)
+    path('employee/delete/<int:pk>/', views.delete_customer),
+    path('employees/', views.get_all_employees)
 ]

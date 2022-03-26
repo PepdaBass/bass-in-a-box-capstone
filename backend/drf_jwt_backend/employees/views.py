@@ -21,6 +21,13 @@ def get_employee_information(request, pk):
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
+def get_all_employees(request):
+    employees = Employee.objects.all()
+    serializer = EmployeeSerializer(employees, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def get_all_customers(request):
     customers = Customer.objects.all()
     serializer = CustomerSerializer(customers, many=True)
