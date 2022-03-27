@@ -3,11 +3,18 @@ import axios from 'axios';
 import useAuth from '../../hooks/useAuth';
 import HomePage from '../HomePage/HomePage';
 import CustomerAccountsTable from '../../components/CustomerAccountsTable/CustomerAccountsTable';
+import ProductLineChart from '../../components/ProductLineChart/ProductLineChart';
 
 
 const EmployeeHomePage = ({ customers, boxPlans, selfTeachPlan, beginnerPackage }) => {
     const [user, token] = useAuth();
     const [employees, setEmployees] = useState([]);
+    const [matchCustomerBoujee, setMatchCustomerBoujee] = useState([]);
+    const [matchCustomerBasic, setMatchCustomerBasic] = useState([]);
+    const [matchCustomerBudget, setMatchCustomerBudget] = useState([]);
+    const [matchCustomerOnline, setMatchCustomerOnline] = useState([]);
+    const [matchCustomerBeginner, setMatchCustomerBeginner] = useState([]);
+  
 
     const userId = user.user_id || user.id;
 
@@ -45,7 +52,25 @@ const EmployeeHomePage = ({ customers, boxPlans, selfTeachPlan, beginnerPackage 
           </p>
       ))}
             <div>
-                <CustomerAccountsTable customers={customers}boxPlans={boxPlans} beginnerPackage={beginnerPackage} selfTeachPlan={selfTeachPlan}  />
+                <CustomerAccountsTable customers={customers} 
+                boxPlans={boxPlans} 
+                beginnerPackage={beginnerPackage} 
+                selfTeachPlan={selfTeachPlan} 
+                setMatchCustomerBasic={setMatchCustomerBasic} 
+                setMatchCustomerBeginner={setMatchCustomerBeginner} 
+                setMatchCustomerBoujee={setMatchCustomerBoujee} 
+                setMatchCustomerBudget={setMatchCustomerBudget} 
+                setMatchCustomerOnline={setMatchCustomerOnline} 
+                matchCustomerBasic={matchCustomerBasic} 
+                matchCustomerBeginner={matchCustomerBeginner} 
+                matchCustomerBoujee={matchCustomerBoujee} 
+                matchCustomerBudget={matchCustomerBudget} 
+                matchCustomerOnline={matchCustomerOnline} />
+                <ProductLineChart matchCustomerBasic={matchCustomerBasic} 
+                matchCustomerBeginner={matchCustomerBeginner} 
+                matchCustomerBoujee={matchCustomerBoujee} 
+                matchCustomerBudget={matchCustomerBudget} 
+                matchCustomerOnline={matchCustomerOnline} />
             </div>
         </div>
         }

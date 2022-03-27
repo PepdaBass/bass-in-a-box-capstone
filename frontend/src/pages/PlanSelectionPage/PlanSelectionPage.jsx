@@ -15,11 +15,12 @@ const PlanSelectionPage = ({ surveyData, customers, boxPlans, beginnerPackage, s
     let customerId = customers.filter(customer => customer.user.id === userId);
     console.log("customer ID", customerId[0]?.user.id);
 
-    let navigate = useNavigate();
+    const navigate = useNavigate();
+
 
     async function addPlanToCustomer() {
         try {
-            let response = await axios.put(`http://127.0.0.1:8000/api/customer/edit/${customerId[0]?.user.id}/`, formData, {
+            let response = await axios.put(`http://127.0.0.1:8000/api/customer/edit/${customerId[0]?.id}/`, formData, {
                 headers: {
                     Authorization: "Bearer " + token,
                 },
