@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import useCustomForm from "../../hooks/useCustomForm"
+import "./SurveyPage.css";
 
 
 let initialValues = {
@@ -23,7 +24,7 @@ const SurveyPage = ({ setSurveyData }) => {
 
 
     return ( 
-        <div className="container">
+        <div className="survey-container">
       <form className="form" onSubmit={handleSubmit}>
         <label>
           Double Bass or Electric Bass:{" "}
@@ -79,8 +80,8 @@ const SurveyPage = ({ setSurveyData }) => {
                 <option value="Rock">Rock</option>
                 <option value="Jazz">Jazz</option>
                 <option value="Metal">Metal</option>
-            </select>
-        <button>Submit</button>
+            </select><br />
+        <button className="survey-button">Submit</button>
         </form>
         </div>
      );

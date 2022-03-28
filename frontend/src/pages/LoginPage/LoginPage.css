@@ -1,3 +1,30 @@
+.login-div {
+  height: 100%;
+}
+
 .error {
   color: red;
+}
+
+.login-form {
+  padding-top: 8rem;
+}
+
+label {
+  padding: 1rem;
+  font-weight: bold;
+}
+
+.label-div {
+  margin-bottom: 2rem;
+}
+
+p {
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.login-buttons {
+  margin: 2rem 1rem;
+  display: inline;
 }

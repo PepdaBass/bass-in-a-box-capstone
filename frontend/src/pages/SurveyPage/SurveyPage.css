@@ -1,0 +1,27 @@
+.survey-container {
+  margin-left: 32rem;
+  margin-right: 32rem;
+  margin-top: 5rem;
+  font-weight: bold;
+}
+
+select {
+  background: #9ad666;
+}
+
+.survey-button {
+  background: transparent;
+  border: 2px solid #42493a;
+  color: #42493a;
+  padding: 0.4rem 0.5rem;
+  position: relative;
+  top: 50%;
+  left: 25%;
+  margin-top: 1rem;
+}
+
+.survey-button:hover {
+  background: #42493a;
+  color: #9ad666;
+  cursor: pointer;
+}

@@ -1,5 +1,5 @@
 import React from "react"
-import { useNavigate, Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import axios from "axios"
 
 import useAuth from "../../hooks/useAuth"
@@ -122,9 +122,6 @@ const ContinueRegistrationPage = () => {
         </label>
         <button type="submit">Complete Registration</button>
       </form>
-      <Link to="/">
-            <button>Return to Home</button>
-        </Link>
     </div>
      );
 }

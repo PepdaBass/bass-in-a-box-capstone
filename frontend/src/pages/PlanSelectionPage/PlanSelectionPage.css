@@ -1,0 +1,37 @@
+.box-plan-container {
+  margin-top: 1rem;
+}
+
+.col {
+  height: 18rem;
+  width: 20rem;
+  position: relative;
+}
+
+.box-button {
+  position: absolute;
+  left: 5;
+  bottom: 5px;
+}
+
+.plan-button {
+  position: absolute;
+  left: 5;
+  bottom: 5px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.box-button:active,
+.box-button:focus {
+  background: #42493a;
+  color: #9ad666;
+}
+
+.plan-button:active,
+.plan-button:focus {
+  background: #42493a;
+  color: #9ad666;
+}

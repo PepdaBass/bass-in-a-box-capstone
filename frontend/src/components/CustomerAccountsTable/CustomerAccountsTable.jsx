@@ -57,27 +57,32 @@ const CustomerAccountsTable = ({ customers, boxPlans, selfTeachPlan, beginnerPac
     return ( 
         <div>
             {!(customers.length > 1) ? null : (
-            <table>
-                <thead>
-                    <tr>
-                        <th>Total Number of Customers</th>
-                        <th>Boujee Box Subscribers</th>
-                        <th>Basic Box Subscribers</th>
-                        <th>Budget Box Subscribers</th>
-                        <th>Online Lessons Portal Subscribers</th>
-                        <th>Total Amount Paid Monthly</th>
-                    </tr>
-                </thead>
+            <table className="table table-bordered">
                 <tbody>
                     <tr>
+                        <th>Total Number of Customers</th>
                         <td>{customers.length}</td>
+                    </tr>
+                    <tr>
+                        <th>Boujee Box Subscribers</th>
                         <td>{boujeeBoxSuscriberPercent}%</td>
+                    </tr>
+                    <tr>
+                        <th>Basic Box Subscribers</th>
                         <td>{basicBoxSuscriberPercent}%</td>
+                    </tr>
+                    <tr>
+                        <th>Budget Box Subscribers</th>
                         <td>{budgetBoxSuscriberPercent}%</td>
+                    </tr>
+                    <tr>
+                        <th>Online Lessons Portal Subscribers</th>
                         <td>{onlinePortalSubscriberPercent}%</td>
+                    </tr>
+                    <tr>
+                        <th>Total Amount Paid Monthly</th>
                         <td>${Math.round(plansTotalCost / 12)}</td>
                     </tr>
-
                 </tbody>
             </table>)
 }

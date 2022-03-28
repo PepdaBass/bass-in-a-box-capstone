@@ -16,11 +16,11 @@ const ProductLineChart = ({ matchCustomerBoujee, matchCustomerBasic, matchCustom
         calc: "stringify",
         },
     ],
-        ["Boujee Boxes", matchCustomerBoujee.length, "black", null],
-        ["Basic Boxes", matchCustomerBasic.length, "black", null],
-        ["Budget Boxes", matchCustomerBudget.length, "black", null],
-        ["Beginner Boxes", matchCustomerBeginner.length, "black", null],
-        ["Online Portal", matchCustomerOnline.length, "black", null],
+        ["Boujee Boxes", matchCustomerBoujee.length, "#9AD666", null],
+        ["Basic Boxes", matchCustomerBasic.length, "#00A7D1", null],
+        ["Budget Boxes", matchCustomerBudget.length, "#00B286", null],
+        ["Beginner Boxes", matchCustomerBeginner.length, "#00E0FF", null],
+        ["Online Portal", matchCustomerOnline.length, "#42493A", null],
     ]; 
 
     const options = {
@@ -29,18 +29,19 @@ const ProductLineChart = ({ matchCustomerBoujee, matchCustomerBasic, matchCustom
         height: 400,
         bar: { groupWidth: "95%" },
         legend: { position: "none" },
+        backgroundColor: "#A6AE9D"
       };
 
 
     return ( 
         <Chart
-  chartType="BarChart"
-  data={data}
-  options={options}
-  width="100%"
-  height="400px"
-  legendToggle
-/>
+        chartType="BarChart"
+        data={data}
+        options={options}
+        width="100%"
+        height="400px"
+        legendToggle
+        />
      );
 }
  

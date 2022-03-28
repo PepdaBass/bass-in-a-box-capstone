@@ -4,6 +4,7 @@ import useAuth from '../../hooks/useAuth';
 import HomePage from '../HomePage/HomePage';
 import CustomerAccountsTable from '../../components/CustomerAccountsTable/CustomerAccountsTable';
 import ProductLineChart from '../../components/ProductLineChart/ProductLineChart';
+import "./EmployeeHomePage.css";
 
 
 const EmployeeHomePage = ({ customers, boxPlans, selfTeachPlan, beginnerPackage }) => {
@@ -38,44 +39,49 @@ const EmployeeHomePage = ({ customers, boxPlans, selfTeachPlan, beginnerPackage 
 
 
     return ( 
-        <div className="container">
-      {(user.is_staff === false) ? <HomePage /> :
-      <div>
-      <h1>Home Page for {user.username}!</h1>
-      {userEmployeeInfo.map((field) => (
-          <p key={field.id}>
-            Employee Information <br />
-            Name: {field.first_name} {field.last_name} <br />
-            Department: {field.department} <br />
-            Position: {field.position} <br />
-            Telephone: {field.telephone} <br />
-          </p>
-      ))}
+        <div className="container mw-100 h-100">
+            {(user.is_staff === false) ? <HomePage /> :
             <div>
-                <CustomerAccountsTable customers={customers} 
-                boxPlans={boxPlans} 
-                beginnerPackage={beginnerPackage} 
-                selfTeachPlan={selfTeachPlan} 
-                setMatchCustomerBasic={setMatchCustomerBasic} 
-                setMatchCustomerBeginner={setMatchCustomerBeginner} 
-                setMatchCustomerBoujee={setMatchCustomerBoujee} 
-                setMatchCustomerBudget={setMatchCustomerBudget} 
-                setMatchCustomerOnline={setMatchCustomerOnline} 
-                matchCustomerBasic={matchCustomerBasic} 
-                matchCustomerBeginner={matchCustomerBeginner} 
-                matchCustomerBoujee={matchCustomerBoujee} 
-                matchCustomerBudget={matchCustomerBudget} 
-                matchCustomerOnline={matchCustomerOnline} />
-                <ProductLineChart matchCustomerBasic={matchCustomerBasic} 
-                matchCustomerBeginner={matchCustomerBeginner} 
-                matchCustomerBoujee={matchCustomerBoujee} 
-                matchCustomerBudget={matchCustomerBudget} 
-                matchCustomerOnline={matchCustomerOnline} />
-            </div>
+                <div className="container-fluid">
+                    <h1>Home Page for {user.username}!</h1>
+                    {userEmployeeInfo.map((field) => (
+                    <div key={field.id} className="text-center">
+                        <h3>Employee Information</h3>
+                        <p>Name: <span className="fw-bold">{field.first_name} {field.last_name}</span> <br />
+                        Department: <span className="fw-bold">{field.department}</span> <br />
+                        Position: <span className="fw-bold">{field.position}</span> <br />
+                        Telephone: <span className="fw-bold">{field.telephone}</span> <br /> </p>
+                    </div>))}
+                </div>
+                <div className="container-fluid mw-100 h-100">
+                    <div className="row align-items-end">
+                        <div className="col align-self-center">
+                            <CustomerAccountsTable customers={customers} 
+                            boxPlans={boxPlans} 
+                            beginnerPackage={beginnerPackage} 
+                            selfTeachPlan={selfTeachPlan} 
+                            setMatchCustomerBasic={setMatchCustomerBasic} 
+                            setMatchCustomerBeginner={setMatchCustomerBeginner} 
+                            setMatchCustomerBoujee={setMatchCustomerBoujee} 
+                            setMatchCustomerBudget={setMatchCustomerBudget} 
+                            setMatchCustomerOnline={setMatchCustomerOnline} 
+                            matchCustomerBasic={matchCustomerBasic} 
+                            matchCustomerBeginner={matchCustomerBeginner} 
+                            matchCustomerBoujee={matchCustomerBoujee} 
+                            matchCustomerBudget={matchCustomerBudget} 
+                            matchCustomerOnline={matchCustomerOnline} />
+                        </div>
+                        <div className="col mw-100">
+                            <ProductLineChart matchCustomerBasic={matchCustomerBasic} 
+                            matchCustomerBeginner={matchCustomerBeginner} 
+                            matchCustomerBoujee={matchCustomerBoujee} 
+                            matchCustomerBudget={matchCustomerBudget} 
+                            matchCustomerOnline={matchCustomerOnline} />
+                        </div>
+                    </div>
+                </div>
+            </div>}
         </div>
-        }
-        </div>
-     );
+    );
 }
- 
 export default EmployeeHomePage;

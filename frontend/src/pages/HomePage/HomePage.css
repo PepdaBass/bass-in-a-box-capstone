@@ -1,0 +1,24 @@
+.homepage-div {
+  height: 40rem;
+  background-color: #a6ae9d;
+  padding-top: 2rem;
+}
+
+.container-fluid {
+  height: 100%;
+  padding-top: 5rem;
+}
+
+button {
+  background: transparent;
+  border: 2px solid #42493a;
+  color: #42493a;
+  padding: 0.4rem 0.5rem;
+  margin: 10rem;
+}
+
+button:hover {
+  background: #42493a;
+  color: #9ad666;
+  cursor: pointer;
+}

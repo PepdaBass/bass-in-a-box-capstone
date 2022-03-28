@@ -6,6 +6,8 @@ import useAuth from "../../hooks/useAuth";
 import MonthlyBill from "../../components/MonthlyBill/MonthlyBill";
 import EmployeeHomePage from "../EmployeeHomePage/EmployeeHomePage";
 
+import "./HomePage.css";
+
 const HomePage = ({ customers, setCustomers, boxPlans, selfTeachPlan, beginnerPackage }) => {
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
   // The "token" value is the JWT token that you will send in the header of any request requiring authentication
@@ -36,41 +38,46 @@ const HomePage = ({ customers, setCustomers, boxPlans, selfTeachPlan, beginnerPa
     fetchCustomer();
   }, []);
 
-
-  const userCustomerInfo = customers.filter(customer => customer.user.id === userId);
-
+  
+  const userCustomerInfo = customers.filter(customer => customer.user.id === userId); 
+  
+  console.log("user custom", userCustomerInfo)
 
   return (
-    <div className="container">
-      {(user.is_staff === true) ? <EmployeeHomePage customers={customers} boxPlans={boxPlans} beginnerPackage={beginnerPackage} selfTeachPlan={selfTeachPlan} /> :
-      <div>
-      <h1>Home Page for {user.username}!</h1>
-      {userCustomerInfo.map((field) => (
-          <p key={field.id}>
-            Customer Information <br />
-            Name: {field.first_name} {field.last_name} <br />
-            Address: {field.street_address} <br />
-            {field.city}, {field.state} {field.zip_code} <br />
-            Telephone: {field.telephone} <br />
-          </p>
-      ))}
-          <MonthlyBill 
-          totalPayments={totalPayments} 
-          setTotalPayments={setTotalPayments} 
-          userCustomerInfo={userCustomerInfo}
-          customerBoxPlan={customerBoxPlan}
-          setCustomerBoxPlan={setCustomerBoxPlan}
-          customerSelfTeach={customerSelfTeach}
-          setCustomerSelfTeach={setCustomerSelfTeach}
-          customerBeginnerPackage={customerBeginnerPackage}
-          setCustomerBeginnerPackage={setCustomerBeginnerPackage}
-          customers={customers} />
-      <Link to="/create_customer">
-        <button>Finish Registration</button>
-      </Link>
-      <Link to="/take_survey">
-        <button>Take Survey</button>
-      </Link>
+    <div className="homepage-div">
+      {!(customers.filter(customer => customer.user.id === userId)) ? <EmployeeHomePage customers={customers} boxPlans={boxPlans} beginnerPackage={beginnerPackage} selfTeachPlan={selfTeachPlan} /> :
+      <div className="container-fluid mw-100 text-center">
+        <div>
+            <div>
+              <h1>Home Page for {user.username}!</h1>
+              {userCustomerInfo.map((field) => (
+                  <p key={field.id}>
+                    Customer Information <br />
+                    Name: {field.first_name} {field.last_name} <br />
+                    Address: {field.street_address} <br />
+                    {field.city}, {field.state} {field.zip_code} <br />
+                    Telephone: {field.telephone} <br />
+                  </p>))}
+                  <MonthlyBill 
+                  totalPayments={totalPayments} 
+                  setTotalPayments={setTotalPayments} 
+                  userCustomerInfo={userCustomerInfo}
+                  customerBoxPlan={customerBoxPlan}
+                  setCustomerBoxPlan={setCustomerBoxPlan}
+                  customerSelfTeach={customerSelfTeach}
+                  setCustomerSelfTeach={setCustomerSelfTeach}
+                  customerBeginnerPackage={customerBeginnerPackage}
+                  setCustomerBeginnerPackage={setCustomerBeginnerPackage}
+                  customers={customers} />
+                  {(userCustomerInfo.length < 1) ? 
+              <Link to="/create_customer">
+                <button>Finish Registration</button>
+              </Link> : null}
+              <Link to="/take_survey">
+                <button>Take Survey</button>
+              </Link>
+            </div>
+        </div>
       </div>}
     </div>
   );
