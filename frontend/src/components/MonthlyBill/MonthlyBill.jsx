@@ -59,14 +59,14 @@ const MonthlyBill = ({ customers, totalPayments, setTotalPayments, userCustomerI
 
     
 
-    console.log("first tier", firstPriceTier)
-    console.log("second tier", secondPriceTier)
-    console.log("third tier", thirdPriceTier)
-    console.log("total payments", totalPayments)
-    console.log("box plan", customerBoxPlan)
-    console.log("self teach plan", customerSelfTeach)
-    console.log("beginner plan", customerBeginnerPackage)
-    console.log("user Customer info", userCustomerInfo)
+    // console.log("first tier", firstPriceTier)
+    // console.log("second tier", secondPriceTier)
+    // console.log("third tier", thirdPriceTier)
+    // console.log("total payments", totalPayments)
+    // console.log("box plan", customerBoxPlan)
+    // console.log("self teach plan", customerSelfTeach)
+    // console.log("beginner plan", customerBeginnerPackage)
+    // console.log("user Customer info", userCustomerInfo)
 
 
     return ( 

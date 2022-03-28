@@ -28,7 +28,7 @@ const PlanSelectionPage = ({ surveyData, customers, boxPlans, beginnerPackage, s
             });
             console.log(response);
             console.log("put", formData)
-            navigate("/");
+            navigate("/shipping");
         }
         catch (error) {
             console.log(error.message);

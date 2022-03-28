@@ -28,7 +28,7 @@ const SurveyPage = ({ setSurveyData }) => {
       <form className="form" onSubmit={handleSubmit}>
         <label>
           Double Bass or Electric Bass:{" "}
-          </label>
+          
             <select
             name="instrumentType"
             value={formData.instrumentType}
@@ -36,9 +36,10 @@ const SurveyPage = ({ setSurveyData }) => {
                 <option value="Electric Bass">Electric Bass</option>
                 <option value="Double Bass">Double Bass</option>
             </select>
+            </label>
         <label>
           Skill Level:{" "}
-        </label>
+        
         <select
             name="skillLevel"
             value={formData.skillLevel}
@@ -47,9 +48,10 @@ const SurveyPage = ({ setSurveyData }) => {
                 <option value="Intermediate">Intermediate</option>
                 <option value="Advanced">Advanced</option>
         </select>
+        </label>
         <label>
           Ability to read notation:{" "}
-        </label>
+        
         <select
             name="readOrNo"
             value={formData.readOrNo}
@@ -57,9 +59,10 @@ const SurveyPage = ({ setSurveyData }) => {
                 <option value="Yes">Yes</option>
                 <option value="No">No</option>
         </select>
+        </label>
         <label>
           Desire to learn to read:{" "}
-        </label>
+        
         <select
             name="learnToRead"
             value={formData.learnToRead}
@@ -68,9 +71,10 @@ const SurveyPage = ({ setSurveyData }) => {
                 <option value="Yes">Yes</option>
                 <option value="No">No</option>
         </select>
+        </label>
         <label>
           Music Style desired:{" "}
-        </label>
+        
           <select
             name="musicStyle"
             value={formData.musicStyle}
@@ -80,7 +84,8 @@ const SurveyPage = ({ setSurveyData }) => {
                 <option value="Rock">Rock</option>
                 <option value="Jazz">Jazz</option>
                 <option value="Metal">Metal</option>
-            </select><br />
+            </select>
+            </label><br />
         <button className="survey-button">Submit</button>
         </form>
         </div>

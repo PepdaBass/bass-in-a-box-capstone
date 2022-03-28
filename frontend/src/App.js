@@ -12,6 +12,9 @@ import ContinueRegistrationPage from "./pages/ContinueRegistrationPage/ContinueR
 import SurveyPage from "./pages/SurveyPage/SurveyPage";
 import PlanSelectionPage from "./pages/PlanSelectionPage/PlanSelectionPage";
 import EmployeeHomePage from "./pages/EmployeeHomePage/EmployeeHomePage";
+import OnlinePortalPage from "./pages/OnlinePortalPage/OnlinePortalPage";
+import ShippingPage from "./pages/ShippingPage/ShippingPage";
+import PaymentPage from "./pages/PaymentPage/PaymentPage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -30,6 +33,8 @@ export default function App() {
   const [boxPlans, setBoxPlans] = useState([]);
   const [beginnerPackage, setBeginnerPackage] = useState([]);
   const [selfTeachPlan, setSelfTeachPlan] = useState([]);
+  const [shippingData, setShippingData] = useState([]);
+
 
 
 
@@ -102,7 +107,20 @@ export default function App() {
         <PrivateRoute>
             <PlanSelectionPage customers={customers} surveyData={surveyData} boxPlans={boxPlans} beginnerPackage={beginnerPackage} selfTeachPlan={selfTeachPlan} />
         </PrivateRoute>} />
+        <Route path="/online_portal" element={
+          <PrivateRoute>
+             <OnlinePortalPage />
+          </PrivateRoute>} />
+          <Route path="/shipping" element={
+          <PrivateRoute>
+             <ShippingPage customers={customers} setShippingData={setShippingData} />
+          </PrivateRoute>} />
+          <Route path="/cc_payment" element={
+          <PrivateRoute>
+             <PaymentPage customers={customers} shippingData={shippingData} />
+          </PrivateRoute>} />
       </Routes>
+      <div className="push"></div>
       </div>
       <Footer />
 </>

@@ -1,0 +1,26 @@
+.shipping-container {
+  padding: 20px;
+  position: relative;
+}
+
+.shipping-container > h3 {
+  margin: 1rem 0 0 3rem;
+}
+.shipping-data {
+  width: 50%;
+  float: left;
+  padding: 20px;
+  margin: 3rem 0 0 0;
+}
+
+.confirm-address {
+  width: 50%;
+  float: left;
+  padding: 20px;
+  margin: -2rem 0 0 0;
+}
+
+.ship-btn {
+  position: absolute;
+  margin: 12rem 50rem 20rem 18.6rem;
+}

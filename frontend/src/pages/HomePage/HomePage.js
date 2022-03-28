@@ -42,11 +42,12 @@ const HomePage = ({ customers, setCustomers, boxPlans, selfTeachPlan, beginnerPa
   const userCustomerInfo = customers.filter(customer => customer.user.id === userId); 
   
   console.log("user custom", userCustomerInfo)
+  console.log("userid", userId)
 
   return (
     <div className="homepage-div">
-      {!(customers.filter(customer => customer.user.id === userId)) ? <EmployeeHomePage customers={customers} boxPlans={boxPlans} beginnerPackage={beginnerPackage} selfTeachPlan={selfTeachPlan} /> :
-      <div className="container-fluid mw-100 text-center">
+      {(user.is_staff === true) ? <EmployeeHomePage customers={customers} boxPlans={boxPlans} beginnerPackage={beginnerPackage} selfTeachPlan={selfTeachPlan} /> :
+      (<div className="container-fluid mw-100 text-center">
         <div>
             <div>
               <h1>Home Page for {user.username}!</h1>
@@ -76,9 +77,13 @@ const HomePage = ({ customers, setCustomers, boxPlans, selfTeachPlan, beginnerPa
               <Link to="/take_survey">
                 <button>Take Survey</button>
               </Link>
+              {!(userCustomerInfo[0]?.self_teach_plan === false) ? (
+              <Link to="/online_portal">
+                <button>Online Portal</button>
+              </Link>) : null}
             </div>
         </div>
-      </div>}
+      </div>)}
     </div>
   );
 };

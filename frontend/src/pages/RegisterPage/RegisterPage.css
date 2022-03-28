@@ -1,3 +1,26 @@
 .register-container {
-  padding: 0 30rem 0 30rem;
+  padding: 4rem 20rem 0 20rem;
+  margin: 0;
+  min-height: 100vh;
+  margin-bottom: -49rem;
+}
+
+.register-labels > label {
+  display: block;
+  clear: left;
+  float: left;
+  width: 500px;
+  text-align: right;
+}
+.register-labels > input {
+  display: block;
+  float: right;
+}
+
+.register-btn {
+  margin: 0 17rem 0 17rem;
+}
+
+.button-reg {
+  margin: 0 17rem 0 2rem;
 }

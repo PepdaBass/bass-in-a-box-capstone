@@ -9,8 +9,14 @@ html {
   background-color: #a6ae9d;
   height: 100%;
   max-width: 100%;
+  position: relative;
 }
 
 .app-div {
   min-height: 100vh;
+  margin-bottom: -5rem;
+}
+
+.push {
+  height: 5rem;
 }

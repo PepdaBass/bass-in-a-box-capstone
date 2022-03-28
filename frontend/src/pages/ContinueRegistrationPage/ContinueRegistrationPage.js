@@ -4,6 +4,7 @@ import axios from "axios"
 
 import useAuth from "../../hooks/useAuth"
 import useCustomForm from "../../hooks/useCustomForm"
+import "./ContinueRegistrationPage.css";
 
 
 let initialValues = {
@@ -46,8 +47,9 @@ const ContinueRegistrationPage = () => {
     }
 
     return ( 
-        <div className="container">
+        <div className="continue-container">
       <form className="form" onSubmit={handleSubmit}>
+        <div className="labels">
         <label>
           First Name:{" "}
           <input
@@ -120,7 +122,10 @@ const ContinueRegistrationPage = () => {
             onChange={handleInputChange}
           />
         </label>
+        </div>
+        <div className="finish-register-btn">
         <button type="submit">Complete Registration</button>
+        </div>
       </form>
     </div>
      );

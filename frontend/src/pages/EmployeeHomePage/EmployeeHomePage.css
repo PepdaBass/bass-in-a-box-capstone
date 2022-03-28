@@ -6,6 +6,31 @@
   margin: 0;
 } */
 
+.employee-div {
+  margin: -4rem;
+}
+
 p {
   color: black;
+}
+
+h1 {
+  text-align: center;
+}
+
+.table {
+  margin-top: 5rem;
+  margin-right: -2rem;
+}
+
+.employee-info {
+  margin-bottom: -5rem;
+}
+
+.tablechart {
+  margin-left: 1rem;
+}
+
+#tablechart {
+  margin-left: 5rem;
 }

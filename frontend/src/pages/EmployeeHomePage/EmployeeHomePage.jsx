@@ -39,10 +39,11 @@ const EmployeeHomePage = ({ customers, boxPlans, selfTeachPlan, beginnerPackage 
 
 
     return ( 
-        <div className="container mw-100 h-100">
+        <div className="container">
             {(user.is_staff === false) ? <HomePage /> :
-            <div>
+            <div className="employee-div">
                 <div className="container-fluid">
+                  <div className="employee-info">
                     <h1>Home Page for {user.username}!</h1>
                     {userEmployeeInfo.map((field) => (
                     <div key={field.id} className="text-center">
@@ -52,10 +53,12 @@ const EmployeeHomePage = ({ customers, boxPlans, selfTeachPlan, beginnerPackage 
                         Position: <span className="fw-bold">{field.position}</span> <br />
                         Telephone: <span className="fw-bold">{field.telephone}</span> <br /> </p>
                     </div>))}
+                    </div>
                 </div>
-                <div className="container-fluid mw-100 h-100">
-                    <div className="row align-items-end">
-                        <div className="col align-self-center">
+                <div className="container-fluid">
+                    <div className="row align-items-center">
+                        <div className="col align-self-start" id="tablechart">
+                          <div className="table">
                             <CustomerAccountsTable customers={customers} 
                             boxPlans={boxPlans} 
                             beginnerPackage={beginnerPackage} 
@@ -70,8 +73,9 @@ const EmployeeHomePage = ({ customers, boxPlans, selfTeachPlan, beginnerPackage 
                             matchCustomerBoujee={matchCustomerBoujee} 
                             matchCustomerBudget={matchCustomerBudget} 
                             matchCustomerOnline={matchCustomerOnline} />
+                            </div>
                         </div>
-                        <div className="col mw-100">
+                        <div className="col">
                             <ProductLineChart matchCustomerBasic={matchCustomerBasic} 
                             matchCustomerBeginner={matchCustomerBeginner} 
                             matchCustomerBoujee={matchCustomerBoujee} 

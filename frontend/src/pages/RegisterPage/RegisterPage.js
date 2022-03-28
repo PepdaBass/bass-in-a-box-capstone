@@ -21,6 +21,7 @@ const RegisterPage = () => {
   return (
     <div className="register-container">
       <form className="form" onSubmit={handleSubmit}>
+        <div className="register-labels">
         <label>
           Username:{" "}
           <input
@@ -66,11 +67,17 @@ const RegisterPage = () => {
             onChange={handleInputChange}
           />
         </label>
+        </div>
+        <br />
+        <div className="register-btn">
         <p style={{ fontSize: "12px" }}>
           NOTE: Make this an uncommon password with characters, numbers, and
           special characters!
         </p>
+        <div className="button-reg">
           <button>Register</button>
+          </div>
+          </div>
       </form>
     </div>
   );
