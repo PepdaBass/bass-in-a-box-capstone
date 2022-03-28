@@ -76,8 +76,9 @@ export default function App() {
 
   
   return (
-    <div>
+    <>
       <Navbar />
+      <div className="app-div">
       <Routes>
         <Route
           path="/"
@@ -102,7 +103,8 @@ export default function App() {
             <PlanSelectionPage customers={customers} surveyData={surveyData} boxPlans={boxPlans} beginnerPackage={beginnerPackage} selfTeachPlan={selfTeachPlan} />
         </PrivateRoute>} />
       </Routes>
-    
-    </div>
+      </div>
+      <Footer />
+</>
   );
 }
