@@ -43,11 +43,17 @@ const ConfirmShippingAddress = ({ userCustomerInfo, customers, userId }) => {
             });
             console.log(response);
             console.log("put", formData)
+            alert("Your address has been updated!");
         }
         catch (error) {
             console.log(error.message);
         }
     }
+
+    // const onClickHandler = (event) => {
+    //     event.preventDefault();
+    //     alert("Address has been updated!");
+    // } 
 
     console.log("customer info", userCustomerInfo[0].first_name);
     console.log("customer id", customerId);
@@ -114,7 +120,7 @@ const ConfirmShippingAddress = ({ userCustomerInfo, customers, userId }) => {
                         </label>
                     </div>
                         <div className="confirm-address-btn">
-                            <button type="submit">Edit Address</button>
+                            <button type="submit">Update</button>
                         </div>
                 </form>
              </div>
